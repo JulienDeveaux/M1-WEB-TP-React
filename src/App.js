@@ -8,19 +8,21 @@ import {BrowserRouter} from "react-router-dom";
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.handleJson = this.handleJson.bind(this);
+        this.state = {json: ''};
+        this.getJson = this.getJson.bind(this);
     }
 
-    handleJson(json) {
+    async getJson(url) {
+        const res = await fetch(url).catch(() => {});
+        let json = res.ok ? await res.text() : "";
         this.setState({json: json});
-        console.log(json);
     }
 
     render() {
         return (
             <BrowserRouter>
-                <FetchData getJson={this.handleJson}/>
-                <Captors/>
+                <FetchData getJson={this.getJson}/>
+                <Captors Parentjson={this.state.json}/>
                 <Data/>
             </BrowserRouter>
         )
