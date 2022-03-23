@@ -23,7 +23,7 @@ class FetchData extends React.Component {
             <div>
                 <input value={this.state.url} onChange={this.handleChange} />
             </div>
-        )
+        );
     }
 }
 

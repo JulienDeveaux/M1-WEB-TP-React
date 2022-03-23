@@ -8,8 +8,12 @@ import {BrowserRouter} from "react-router-dom";
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {json: ''};
+        this.state = {
+            json: '',
+            idSelected: null
+        };
         this.getJson = this.getJson.bind(this);
+        this.getSelected = this.getSelected.bind(this);
     }
 
     async getJson(url) {
@@ -18,14 +22,18 @@ class App extends React.Component {
         this.setState({json: json});
     }
 
+    getSelected(id) {
+        this.setState({idSelected: id});
+    }
+
     render() {
         return (
             <BrowserRouter>
                 <FetchData getJson={this.getJson}/>
-                <Captors Parentjson={this.state.json}/>
-                <Data/>
+                <Captors Parentjson={this.state.json} getSelected={this.getSelected}/>
+                <Data Parentjson={this.state.json} idSelected={this.state.idSelected}/>
             </BrowserRouter>
-        )
+        );
     }
 }
 
