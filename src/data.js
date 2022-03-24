@@ -35,7 +35,6 @@ class Data extends React.Component {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
-                console.log(json)
                 let item = json.find(e => e.id === this.props.idSelected);
                 if(item.data.hasOwnProperty("value")) {
                     let status = "";

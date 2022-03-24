@@ -3,7 +3,6 @@ import Captors from './captors';
 import Data from './data';
 import FetchData from './fetchData';
 import React from "react";
-import {BrowserRouter} from "react-router-dom";
 
 class App extends React.Component {
     constructor(props) {
@@ -28,11 +27,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <BrowserRouter>
+            <div>
                 <FetchData getJson={this.getJson}/>
                 <Captors Parentjson={this.state.json} getSelected={this.getSelected}/>
                 <Data Parentjson={this.state.json} idSelected={this.state.idSelected}/>
-            </BrowserRouter>
+            </div>
         );
     }
 }

@@ -1,5 +1,7 @@
 import './Style/captors.css';
 import React, {Fragment} from "react";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import Data from "./data";
 
 class Captors extends React.Component {
     constructor(props) {
@@ -12,7 +14,11 @@ class Captors extends React.Component {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
-                return <div>{json.map(e => <Fragment key={e.id}><button onClick={() => this.handleClick(e.id)}>{e.name}</button><br/></Fragment>)}</div>;
+                return <div>{json.map(
+                    e => <Fragment key={e.id}>
+                        <Link to={e.type} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
+                        <br/></Fragment>
+                )}</div>;
             } catch (error) {
                 throw new Error("JSON parse error");
             }
@@ -23,11 +29,26 @@ class Captors extends React.Component {
         this.props.getSelected(id);
     }
 
+    getRoutes() {
+        if(this.props.Parentjson !== '') {
+            let json = '';
+            try {
+                json = JSON.parse(this.props.Parentjson);
+                return <Routes>{json.map(
+                    e => <Route key={e.id} path={e.type} element={<Data />}/>
+                )}</Routes>;
+            } catch (error) {
+                throw new Error("JSON parse error");
+            }
+        }
+    }
+
     render() {
         return (
-            <div>
+            <BrowserRouter>
+                {this.getRoutes()}
                 {this.displayCaptors()}
-            </div>
+            </BrowserRouter>
         );
     }
 }
