@@ -42,6 +42,8 @@ class Data extends React.Component {
                         status = item.data.value === 1 ? "OPEN" : "CLOSED";
                     } else if(item.type === "SWITCH" || item.type === "LIGHT") {
                         status = item.data.value === 1 ? "💡" : "OFF";
+                    } else {
+                        status = item.data.value;
                     }
                     return <h2>Status : {status}</h2>
                 } else {
@@ -69,7 +71,7 @@ class Data extends React.Component {
                     return <Fragment><h2>Valeur Actuelle : {myFormatedData[0].data}</h2>
                         <table className={styles.array}><tbody>
                         <tr><th className={styles.cell}>labels</th><th className={styles.cell}>data</th></tr>
-                        {myFormatedData.map(e => <tr key={e.id}><th className={styles.cell}>{e.label}</th><th className={styles.cell}>{e.data}</th></tr>)}
+                        {myFormatedData.map(e => <tr key={e.id}><th className={styles.cell}>{e.label || "no label"}</th><th className={styles.cell}>{e.data}</th></tr>)}
                         </tbody></table></Fragment>;
                 }
             } catch (error) {

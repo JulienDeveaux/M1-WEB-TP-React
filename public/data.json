@@ -66,5 +66,22 @@
     "data": {
       "value": 0
     }
+  },
+  {
+    "id": 666,
+    "name": "test",
+    "type": "MY_TEST",
+    "data": {
+      "value": 666
+    }
+  },
+  {
+    "id": 555,
+    "name": "test2",
+    "type": "MY_TEST2",
+    "data": {
+      "values": [0, 1, 2, 3],
+      "labels": ["ici", "la"]
+    }
   }
 ]

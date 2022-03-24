@@ -28,7 +28,6 @@ class Captors extends React.Component {
     handleClick(id) {
         this.props.getSelected(id);
         this.selectedId = id;
-        console.log(this)
     }
 
     getRoutes() {
