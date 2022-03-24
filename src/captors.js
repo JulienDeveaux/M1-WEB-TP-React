@@ -16,7 +16,7 @@ class Captors extends React.Component {
                 json = JSON.parse(this.props.Parentjson);
                 return <div>{json.map(
                     e => <Fragment key={e.id}>
-                        <Link to={e.type} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
+                        <Link to={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
                         <br/></Fragment>
                 )}</div>;
             } catch (error) {
@@ -35,9 +35,10 @@ class Captors extends React.Component {
             try {
                 json = JSON.parse(this.props.Parentjson);
                 return <Routes>{json.map(
-                    e => <Route key={e.id} path={e.type} element={<Data />}/>
+                    e => <Route key={e.id} path={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} element={<Data />}/>
                 )}</Routes>;
             } catch (error) {
+                console.log(error)
                 throw new Error("JSON parse error");
             }
         }

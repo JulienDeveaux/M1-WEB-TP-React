@@ -50,7 +50,7 @@ class Data extends React.Component {
                     for(let i = 0; i < item.data.values.length; i++) {
                         myFormatedData[i] = ({
                             id: id,
-                            label: item.data.labels[i],
+                            label: new Date(item.data.labels[i]).toUTCString(),
                             data: item.data.values[i]
                         });
                         if (item.type === "HUMIDITY") {
