@@ -1,4 +1,4 @@
-import './Style/captors.css';
+import './Style/captors.module.css';
 import React, {Fragment} from "react";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import Data from "./data";
@@ -14,11 +14,11 @@ class Captors extends React.Component {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
-                return <div>{json.map(
+                return <Fragment>{json.map(
                     e => <Fragment key={e.id}>
                         <Link to={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
                         <br/></Fragment>
-                )}</div>;
+                )}</Fragment>;
             } catch (error) {
                 throw new Error("JSON parse error");
             }

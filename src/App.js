@@ -1,8 +1,8 @@
-import './Style/App.css';
+import './Style/App.module.css';
 import Captors from './captors';
 import Data from './data';
 import FetchData from './fetchData';
-import React from "react";
+import React, {Fragment} from "react";
 
 class App extends React.Component {
     constructor(props) {
@@ -27,11 +27,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <FetchData getJson={this.getJson}/>
                 <Captors Parentjson={this.state.json} getSelected={this.getSelected}/>
                 <Data Parentjson={this.state.json} idSelected={this.state.idSelected}/>
-            </div>
+            </Fragment>
         );
     }
 }

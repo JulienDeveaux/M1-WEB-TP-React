@@ -1,5 +1,5 @@
-import './Style/data.css';
-import React from "react";
+import styles from './Style/data.module.css';
+import React, {Fragment} from "react";
 
 class Data extends React.Component {
     constructor(props) {
@@ -41,16 +41,20 @@ class Data extends React.Component {
                     if(item.type === "DOOR") {
                         status = item.data.value === 1 ? "OPEN" : "CLOSED";
                     } else if(item.type === "SWITCH" || item.type === "LIGHT") {
-                        status = item.data.value === 1 ? "ON" : "OFF";
+                        status = item.data.value === 1 ? "💡" : "OFF";
                     }
                     return <h2>Status : {status}</h2>
                 } else {
                     let myFormatedData = [];
                     let id = 0;
                     for(let i = 0; i < item.data.values.length; i++) {
+                        let theLabel = new Date(item.data.labels[i]).toUTCString();
+                        if(theLabel.normalize() === "Invalid Date".normalize()) {
+                            theLabel = item.data.labels[i];
+                        }
                         myFormatedData[i] = ({
                             id: id,
-                            label: new Date(item.data.labels[i]).toUTCString(),
+                            label: theLabel,
                             data: item.data.values[i]
                         });
                         if (item.type === "HUMIDITY") {
@@ -62,9 +66,11 @@ class Data extends React.Component {
                         }
                         id++;
                     }
-                    return <table><tbody>
-                    {myFormatedData.map(e => <tr key={e.id}><th>{e.label}</th><th>{e.data}</th></tr>)}
-                    </tbody></table>;
+                    return <Fragment><h2>Valeur Actuelle : {myFormatedData[0].data}</h2>
+                        <table className={styles.array}><tbody>
+                        <tr><th className={styles.cell}>labels</th><th className={styles.cell}>data</th></tr>
+                        {myFormatedData.map(e => <tr key={e.id}><th className={styles.cell}>{e.label}</th><th className={styles.cell}>{e.data}</th></tr>)}
+                        </tbody></table></Fragment>;
                 }
             } catch (error) {
             }
@@ -73,11 +79,11 @@ class Data extends React.Component {
 
     render() {
         return (
-            <div>
+            <Fragment>
                 {this.displayTitle()}
                 {this.displayType()}
                 {this.displayArray()}
-            </div>
+            </Fragment>
         );
     }
 }

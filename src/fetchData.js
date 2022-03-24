@@ -1,5 +1,5 @@
-import './Style/fetchData.css';
-import React from "react";
+import './Style/fetchData.module.css';
+import React, {Fragment} from "react";
 
 class FetchData extends React.Component {
 
@@ -20,9 +20,10 @@ class FetchData extends React.Component {
     render()
     {
         return (
-            <div>
+            <Fragment>
                 <input value={this.state.url} onChange={this.handleChange} />
-            </div>
+                <br/>
+            </Fragment>
         );
     }
 }
