@@ -1,0 +1,7 @@
+.txtInput {
+    display: flex;
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    padding-bottom: 50px;
+}

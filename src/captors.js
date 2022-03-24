@@ -1,4 +1,4 @@
-import './Style/captors.module.css';
+import styles from './Style/captors.module.css';
 import React, {Fragment} from "react";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import Data from "./data";
@@ -7,6 +7,7 @@ class Captors extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.selectedId = undefined;
     }
 
     displayCaptors() {
@@ -16,17 +17,18 @@ class Captors extends React.Component {
                 json = JSON.parse(this.props.Parentjson);
                 return <Fragment>{json.map(
                     e => <Fragment key={e.id}>
-                        <Link to={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
+                        <Link to={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} className={this.selectedId === e.id ? styles.link: styles.selectedLink} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
                         <br/></Fragment>
                 )}</Fragment>;
             } catch (error) {
-                throw new Error("JSON parse error");
             }
         }
     }
 
     handleClick(id) {
         this.props.getSelected(id);
+        this.selectedId = id;
+        console.log(this)
     }
 
     getRoutes() {
@@ -38,8 +40,6 @@ class Captors extends React.Component {
                     e => <Route key={e.id} path={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} element={<Data />}/>
                 )}</Routes>;
             } catch (error) {
-                console.log(error)
-                throw new Error("JSON parse error");
             }
         }
     }

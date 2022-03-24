@@ -1,0 +1,29 @@
+.link {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    margin: 0;
+    padding-bottom: 5px;
+    width: 30%;
+    background-color: grey;
+}
+
+.link:hover {
+    background-color: #696969;
+}
+
+.selectedLink {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    margin: 0;
+    padding-bottom: 5px;
+    width: 30%;
+    background-color: lightgray;
+}
+
+.selectedLink:hover {
+    background-color: #c2c2c2;
+}
