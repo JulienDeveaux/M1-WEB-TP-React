@@ -17,13 +17,30 @@ describe('Affichage de la liste de composants', () => {
     });
 
     let sensors = [
-        {id: 0, name: "switch", type: "SWITCH", value: 0},
-        {id: 1, name: "porte l'étrange", type: "DOOR", value: 1},
-        {id: 2, name: "temp", type: "TEMPERATURE", values: [0, 1, 2, 3, 4], data: ["0", "1", "2", "3", "4"]},
-        {id: 3, name: "lum", type: "LIGHT", value: 0},
-        {id: 4, name: "porteBad", type: "DOOR", value: "OPEN"},
-        {id: 5, name: "random", type: "UNKNOWN", value: 0},
-        {id: 6, name: "random2", type: "UNKNOWN2", values: [0, 1]}
+        {id: 0, name: "switch", type: "SWITCH", data: {value: 0}},
+        {id: 1, name: "porte l'étrange", type: "DOOR", data: {value: 1}},
+        {id: 2, name: "temp", type: "TEMPERATURE", data: {values: [0, 1, 2, 3, 4], labels: ["0", "1", "2", "3", "4"]}},
+        {id: 3, name: "lum", type: "LIGHT", data: {value: 0}},
+        {id: 4, name: "porteBad", type: "DOOR", data: {value: "OPEN"}},
+        {id: 5, name: "random", type: "UNKNOWN", data: {value: 0}},
+        {id: 6, name: "random2", type: "UNKNOWN2", data: {values: [0, 1]}},
+        {id: 7, name: "my Fan", type: "FAN", data: {
+                values: [1073, 1800, 2299, 2176, 1899, 1400],
+                labels: [
+                    "2021-01-19T10:00:00.000Z",
+                    "2021-01-19T10:05:00.000Z",
+                    "2021-01-19T10:10:00.000Z",
+                    "2021-01-19T10:15:00.000Z",
+                    "2021-01-19T10:20:00.000Z",
+                    "Bad Date"
+                ]
+            }
+        },
+        {id: 8, name: "Capteur d'humidité", type: "HUMIDITY", data: {
+                values: [0, 1, 2, 3],
+                labels: ["01", "02", "03", "04"]
+            }
+        }
     ];
 
     it("Affichage de la liste des composants initiaux et de leurs liens", () => {
@@ -40,7 +57,7 @@ describe('Affichage de la liste de composants', () => {
         expect(sensorList[1].href).toBe("http://localhost/porte-ltrange")
         expect(sensorList[2].href).toBe("http://localhost/temp")
         expect(sensorList[5].href).toBe("http://localhost/random")
-        expect(sensorList[7]).toBeUndefined();
+        expect(sensorList[9]).toBeUndefined();
     });
     it("clic, sélection et transfert d'id sélectionné", () => {
         let idSelected = undefined;

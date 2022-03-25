@@ -37,7 +37,6 @@ class Data extends React.Component {
                 json = JSON.parse(this.props.Parentjson);
                 let item = json.find(e => e.id === this.props.idSelected);
                 if(item.data.hasOwnProperty("value")) {
-                    let status = "";
                     if(item.type === "DOOR") {
                         if(item.data.value === 1) {
                             return <img className={styles.imageBig} src="/ressources/door_OPEN.png" alt="OPEN"/>
@@ -57,9 +56,8 @@ class Data extends React.Component {
                             return <img className={styles.image} src="/ressources/switch_OFF.png" alt="OFF"/>
                         }
                     } else {
-                        status = item.data.value;
+                        return <h3>Status : {item.data.value}</h3>;
                     }
-                    return <h2>Status : {status}</h2>
                 } else {
                     let myFormatedData = [];
                     let id = 0;
@@ -82,7 +80,7 @@ class Data extends React.Component {
                         }
                         id++;
                     }
-                    return <Fragment><h2>Valeur Actuelle : {myFormatedData[0].data}</h2>
+                    return <Fragment><h3>Valeur Actuelle : {myFormatedData[0].data}</h3>
                         <table className={styles.array}><tbody>
                         <tr><th className={`${styles.cellTitle} ${styles.cell}`}>labels</th><th className={`${styles.cellTitle} ${styles.cell}`}>data</th></tr>
                         {myFormatedData.map(e => <tr key={e.id}><th className={styles.cell}>{e.label || "no label"}</th><th className={styles.cell}>{e.data}</th></tr>)}
