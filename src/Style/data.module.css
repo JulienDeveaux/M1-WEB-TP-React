@@ -30,3 +30,13 @@
     border: 2px solid;
     background-color: lightgray;
 }
+
+.image {
+    width: 50px;
+    height: 50px;
+}
+
+.imageBig {
+    width: 90px;
+    height: 150px;
+}

@@ -23,6 +23,14 @@
     "name": "Porte du Garage",
     "type": "DOOR",
     "data": {
+      "value": 1
+    }
+  },
+  {
+    "id": 10246,
+    "name": "Porte d'entrée",
+    "type": "DOOR",
+    "data": {
       "value": 0
     }
   },

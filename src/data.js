@@ -39,9 +39,23 @@ class Data extends React.Component {
                 if(item.data.hasOwnProperty("value")) {
                     let status = "";
                     if(item.type === "DOOR") {
-                        status = item.data.value === 1 ? "OPEN" : "CLOSED";
-                    } else if(item.type === "SWITCH" || item.type === "LIGHT") {
-                        status = item.data.value === 1 ? "💡" : "OFF";
+                        if(item.data.value === 1) {
+                            return <img className={styles.imageBig} src="/ressources/door_OPEN.png" alt="OPEN"/>
+                        } else {
+                            return <img className={styles.imageBig} src="/ressources/door_CLOSED.png" alt="CLOSED"/>
+                        }
+                    } else if(item.type === "LIGHT") {
+                        if(item.data.value === 1) {
+                            return <img className={styles.image} src="/ressources/lightbulb_ON.png" alt="ON"/>
+                        } else {
+                            return <img className={styles.image} src="/ressources/lightbulb_OFF.png" alt="OFF"/>
+                        }
+                    } else if(item.type === "SWITCH") {
+                        if(item.data.value === 1) {
+                            return <img className={styles.image} src="/ressources/switch_ON.png" alt="ON"/>
+                        } else {
+                            return <img className={styles.image} src="/ressources/switch_OFF.png" alt="OFF"/>
+                        }
                     } else {
                         status = item.data.value;
                     }
