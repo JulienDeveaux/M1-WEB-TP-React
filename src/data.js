@@ -24,7 +24,7 @@ class Data extends React.Component {
             try {
                 json = JSON.parse(this.props.Parentjson);
                 let item = json.find(e => e.id === this.props.idSelected);
-                return <h1>{item.name}</h1>;
+                return <h1 className={styles.title}>{item.name}</h1>;
             } catch (error) {
             }
         }
@@ -70,7 +70,7 @@ class Data extends React.Component {
                     }
                     return <Fragment><h2>Valeur Actuelle : {myFormatedData[0].data}</h2>
                         <table className={styles.array}><tbody>
-                        <tr><th className={styles.cell}>labels</th><th className={styles.cell}>data</th></tr>
+                        <tr><th className={`${styles.cellTitle} ${styles.cell}`}>labels</th><th className={`${styles.cellTitle} ${styles.cell}`}>data</th></tr>
                         {myFormatedData.map(e => <tr key={e.id}><th className={styles.cell}>{e.label || "no label"}</th><th className={styles.cell}>{e.data}</th></tr>)}
                         </tbody></table></Fragment>;
                 }
@@ -81,11 +81,11 @@ class Data extends React.Component {
 
     render() {
         return (
-            <Fragment>
+            <div className={this.props.hasStyle === true ? styles.dataSide : ""}>
                 {this.displayTitle()}
                 {this.displayType()}
                 {this.displayArray()}
-            </Fragment>
+            </div>
         );
     }
 }

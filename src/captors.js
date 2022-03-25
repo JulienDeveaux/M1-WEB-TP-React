@@ -17,7 +17,7 @@ class Captors extends React.Component {
                 json = JSON.parse(this.props.Parentjson);
                 return <Fragment>{json.map(
                     e => <Fragment key={e.id}>
-                        <Link to={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} className={this.selectedId === e.id ? styles.link: styles.selectedLink} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
+                        <Link to={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} className={this.selectedId === e.id ? styles.selectedLink: styles.link} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
                         <br/></Fragment>
                 )}</Fragment>;
             } catch (error) {
@@ -36,7 +36,7 @@ class Captors extends React.Component {
             try {
                 json = JSON.parse(this.props.Parentjson);
                 return <Routes>{json.map(
-                    e => <Route key={e.id} path={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} element={<Data />}/>
+                    e => <Route key={e.id} path={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} element={this.selectedId !== undefined ? <Data hasStyle={false}/> : ""}/>
                 )}</Routes>;
             } catch (error) {
             }
@@ -47,7 +47,9 @@ class Captors extends React.Component {
         return (
             <BrowserRouter>
                 {this.getRoutes()}
+                <div className={styles.captorSide}>
                 {this.displayCaptors()}
+                </div>
             </BrowserRouter>
         );
     }

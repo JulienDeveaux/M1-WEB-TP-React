@@ -1,18 +1,3 @@
-.link {
-    display: flex;
-    text-decoration: none;
-    color: black;
-    border: 1px solid black;
-    margin: 0;
-    padding-bottom: 5px;
-    width: 30%;
-    background-color: grey;
-}
-
-.link:hover {
-    background-color: #696969;
-}
-
 .selectedLink {
     display: flex;
     text-decoration: none;
@@ -21,9 +6,34 @@
     margin: 0;
     padding-bottom: 5px;
     width: 30%;
-    background-color: lightgray;
+    background-color: grey;
+    border-radius: 10px;
 }
 
 .selectedLink:hover {
+    background-color: #696969;
+    box-shadow: 5px 5px 3px darkgray;
+}
+
+.link {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    margin: 0;
+    padding-bottom: 5px;
+    width: 30%;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.link:hover {
     background-color: #c2c2c2;
+    box-shadow: 5px 5px 3px darkgray;
+}
+
+.captorSide {
+    width: 50%;
+    float: left;
+    padding: 20px;
 }

@@ -1,14 +1,32 @@
 .array {
     margin: 0 auto;
     border: 1px solid black;
+    border-radius: 10px;
 }
 
 .cell {
     width: 90%;
     margin: 0 auto;
     border: 1px solid black;
+    border-radius: 10px;
+}
+
+.cellTitle {
+    background-color: lightgray;
 }
 
 .row {
     display: flex;
+}
+
+.dataSide {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid;
+}
+
+.title {
+    border: 2px solid;
+    background-color: lightgray;
 }

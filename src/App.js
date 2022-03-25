@@ -33,8 +33,10 @@ class App extends React.Component {
         return (
             <Fragment>
                 <FetchData getJson={this.getJson}/>
-                <Captors Parentjson={this.state.json} getSelected={this.getSelected}/>
-                <Data Parentjson={this.state.json} idSelected={this.state.idSelected}/>
+                <div className={styles.sideBySide}>
+                    <Captors Parentjson={this.state.json} getSelected={this.getSelected}/>
+                    {this.state.idSelected !== null ? <Data Parentjson={this.state.json} idSelected={this.state.idSelected}/> : ""}
+                </div>
             </Fragment>
         );
     }
