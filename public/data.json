@@ -68,11 +68,27 @@
     }
   },
   {
+    "id": 9,
+    "name": "lumière int",
+    "type": "LIGHT",
+    "data": {
+      "value": 0
+    }
+  },
+  {
     "id": 4,
     "name": "switch ext",
     "type": "SWITCH",
     "data": {
       "value": 0
+    }
+  },
+  {
+    "id": 5,
+    "name": "switch int",
+    "type": "SWITCH",
+    "data": {
+      "value": 1
     }
   },
   {
