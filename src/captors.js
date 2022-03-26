@@ -11,7 +11,7 @@ class Captors extends React.Component {
     }
 
     displayCaptors() {
-        if(this.props.Parentjson !== '') {
+        if(this.props.Parentjson !== '' && this.props.Parentjson !== undefined) {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
@@ -31,7 +31,7 @@ class Captors extends React.Component {
     }
 
     getRoutes() {
-        if(this.props.Parentjson !== '') {
+        if(this.props.Parentjson !== '' && this.props.Parentjson !== undefined) {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);

@@ -1,6 +1,7 @@
 import {act, render} from '@testing-library/react';
 import {unmountComponentAtNode} from "react-dom";
 import Captors from "../captors";
+import React from "react";
 
 describe('Affichage de la liste de composants', () => {
     let container = null;
@@ -43,6 +44,14 @@ describe('Affichage de la liste de composants', () => {
         }
     ];
 
+    it("aucun affichage sans json", () => {
+        act(() => {
+            render(
+                <Captors />, container
+            );
+        });
+        expect(document.getElementsByTagName("a").textContent).toBeUndefined()
+    });
     it("Affichage de la liste des composants initiaux et de leurs liens", () => {
         act(() => {
             render(
