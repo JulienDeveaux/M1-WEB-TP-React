@@ -20,7 +20,7 @@ describe('affichage des différents types de données', () => {
     let sensors = [
         {id: 0, name: "switch", type: "SWITCH", data: {value: 0}},
         {id: 1, name: "porte l'étrange", type: "DOOR", data: {value: 1}},
-        {id: 2, name: "temp", type: "TEMPERATURE", data: {values: [0, 1, 2, 3, 4], labels: ["0", "1", "2", "3", "4"]}},
+        {id: 2, name: "temp", type: "TEMPERATURE", data: {values: [0, 1, 2, 3, 4], labels: ["C0", "C1", "C2", "C3", "C4"]}},
         {id: 3, name: "lum", type: "LIGHT", data: {value: 0}},
         {id: 4, name: "porteBad", type: "DOOR", data: {value: "OPEN"}},
         {id: 5, name: "random", type: "UNKNOWN", data: {value: 0}},
@@ -80,9 +80,9 @@ describe('affichage des différents types de données', () => {
         expect(status[0].textContent).toBe("Valeur Actuelle : 4°");
         expect(array[0]).toBe("labels");
         expect(array[1]).toBe("data");
-        expect(array[2]).toBe("Sat, 31 Mar 2001 22:00:00 GMT");
+        expect(array[2]).toBe("C4");
         expect(array[3]).toBe("4°");
-        expect(array[10]).toBe("Fri, 31 Dec 1999 23:00:00 GMT");
+        expect(array[10]).toBe("C0");
         expect(array[11]).toBe("0°");
     });
     it("bon affichage des ventilateurs", () => {
