@@ -7,7 +7,7 @@ class Data extends React.Component {
     }
 
     displayType() {
-        if(this.props.Parentjson !== '') {
+        if(this.props.Parentjson !== '' && this.props.Parentjson !== undefined) {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
@@ -19,7 +19,7 @@ class Data extends React.Component {
     }
 
     displayTitle() {
-        if(this.props.Parentjson !== '') {
+        if(this.props.Parentjson !== '' && this.props.Parentjson !== undefined) {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
@@ -31,7 +31,7 @@ class Data extends React.Component {
     }
 
     displayArray() {
-        if(this.props.Parentjson !== '') {
+        if(this.props.Parentjson !== '' && this.props.Parentjson !== undefined) {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
@@ -81,7 +81,7 @@ class Data extends React.Component {
                         id++;
                     }
                     return <Fragment><h3>Valeur Actuelle : {myFormatedData[0].data}</h3>
-                        <table className={styles.array}><tbody>
+                        <table className={styles.array} id="table"><tbody>
                         <tr><th className={`${styles.cellTitle} ${styles.cell}`}>labels</th><th className={`${styles.cellTitle} ${styles.cell}`}>data</th></tr>
                         {myFormatedData.map(e => <tr key={e.id}><th className={styles.cell}>{e.label || "no label"}</th><th className={styles.cell}>{e.data}</th></tr>)}
                         </tbody></table></Fragment>;
