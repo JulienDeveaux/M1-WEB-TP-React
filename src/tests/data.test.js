@@ -77,13 +77,13 @@ describe('affichage des différents types de données', () => {
         }
         expect(title[0].textContent).toBe("temp");
         expect(type[0].textContent).toBe("Type : TEMPERATURE");
-        expect(status[0].textContent).toBe("Valeur Actuelle : 0°");
+        expect(status[0].textContent).toBe("Valeur Actuelle : 4°");
         expect(array[0]).toBe("labels");
         expect(array[1]).toBe("data");
-        expect(array[2]).toBe("Fri, 31 Dec 1999 23:00:00 GMT");
-        expect(array[3]).toBe("0°");
-        expect(array[10]).toBe("Sat, 31 Mar 2001 22:00:00 GMT");
-        expect(array[11]).toBe("4°");
+        expect(array[2]).toBe("Sat, 31 Mar 2001 22:00:00 GMT");
+        expect(array[3]).toBe("4°");
+        expect(array[10]).toBe("Fri, 31 Dec 1999 23:00:00 GMT");
+        expect(array[11]).toBe("0°");
     });
     it("bon affichage des ventilateurs", () => {
         let idSelected = 7;
@@ -106,15 +106,15 @@ describe('affichage des différents types de données', () => {
         }
         expect(title[0].textContent).toBe("my Fan");
         expect(type[0].textContent).toBe("Type : FAN_SPEED");
-        expect(status[0].textContent).toBe("Valeur Actuelle : 1073rpm");
+        expect(status[0].textContent).toBe("Valeur Actuelle : 1400rpm");
         expect(array[0]).toBe("labels");
         expect(array[1]).toBe("data");
-        expect(array[2]).toBe("Tue, 19 Jan 2021 10:00:00 GMT");
-        expect(array[3]).toBe("1073rpm");
+        expect(array[2]).toBe("bad Date ici");
+        expect(array[3]).toBe("1400rpm");
         expect(array[4]).toBe("Tue, 19 Jan 2021 10:20:00 GMT");
         expect(array[5]).toBe("1899rpm");
-        expect(array[6]).toBe("bad Date ici");
-        expect(array[7]).toBe("1400rpm");
+        expect(array[6]).toBe("Tue, 19 Jan 2021 10:00:00 GMT");
+        expect(array[7]).toBe("1073rpm");
     });
     it("bon affichage de l'humidité", () => {
         let idSelected = 9;
@@ -137,17 +137,17 @@ describe('affichage des différents types de données', () => {
         }
         expect(title[0].textContent).toBe("Capteur d'humidité");
         expect(type[0].textContent).toBe("Type : HUMIDITY");
-        expect(status[0].textContent).toBe("Valeur Actuelle : 0%");
+        expect(status[0].textContent).toBe("Valeur Actuelle : 3%");
         expect(array[0]).toBe("labels");
         expect(array[1]).toBe("data");
-        expect(array[2]).toBe("C1");
-        expect(array[3]).toBe("0%");
-        expect(array[4]).toBe("C2");
-        expect(array[5]).toBe("1%");
-        expect(array[6]).toBe("C3");
-        expect(array[7]).toBe("2%");
-        expect(array[8]).toBe("C4");
-        expect(array[9]).toBe("3%");
+        expect(array[2]).toBe("C4");
+        expect(array[3]).toBe("3%");
+        expect(array[4]).toBe("C3");
+        expect(array[5]).toBe("2%");
+        expect(array[6]).toBe("C2");
+        expect(array[7]).toBe("1%");
+        expect(array[8]).toBe("C1");
+        expect(array[9]).toBe("0%");
     });
     it("bon affichage de la porte ouverte", () => {
         let idSelected = 1;
@@ -271,12 +271,12 @@ describe('affichage des différents types de données', () => {
         }
         expect(title[0].textContent).toBe("random2");
         expect(type[0].textContent).toBe("Type : UNKNOWN2");
-        expect(status[0].textContent).toBe("Valeur Actuelle : 0");
+        expect(status[0].textContent).toBe("Valeur Actuelle : 1");
         expect(array[0]).toBe("labels");
         expect(array[1]).toBe("data");
-        expect(array[2]).toBe("qu'un seul");
-        expect(array[3]).toBe("0");
-        expect(array[4]).toBe("no label");
-        expect(array[5]).toBe("1");
+        expect(array[2]).toBe("no label");
+        expect(array[3]).toBe("1");
+        expect(array[4]).toBe("qu'un seul");
+        expect(array[5]).toBe("0");
     });
 });

@@ -61,22 +61,22 @@ class Data extends React.Component {
                 } else {
                     let myFormatedData = [];
                     let id = 0;
-                    for(let i = 0; i < item.data.values.length; i++) {
+                    for(let i = item.data.values.length-1; i >= 0; i--) {
                         let theLabel = new Date(item.data.labels[i]).toUTCString();
                         if(theLabel.normalize() === "Invalid Date".normalize()) {
                             theLabel = item.data.labels[i];
                         }
-                        myFormatedData[i] = ({
+                        myFormatedData[id] = ({
                             id: id,
                             label: theLabel,
                             data: item.data.values[i]
                         });
                         if (item.type === "HUMIDITY") {
-                            myFormatedData[i].data = item.data.values[i] + "%"
+                            myFormatedData[id].data = item.data.values[i] + "%"
                         } else if(item.type === "TEMPERATURE") {
-                            myFormatedData[i].data = item.data.values[i] + "°"
+                            myFormatedData[id].data = item.data.values[i] + "°"
                         } else if(item.type === "FAN_SPEED") {
-                            myFormatedData[i].data = item.data.values[i] + "rpm"
+                            myFormatedData[id].data = item.data.values[i] + "rpm"
                         }
                         id++;
                     }
