@@ -15,11 +15,11 @@ class Captors extends React.Component {
             let json = '';
             try {
                 json = JSON.parse(this.props.Parentjson);
-                return <Fragment>{json.map(
+                return <div className={styles.slide}>{json.map(
                     e => <Fragment key={e.id}>
                         <Link to={e.name.replace(/ /g, '-').replace(/[^\w-]+/g, '')} className={this.selectedId === e.id ? styles.selectedLink: styles.link} onClick={() => this.handleClick(e.id)}>{e.name}</Link>
                         <br/></Fragment>
-                )}</Fragment>;
+                )}</div>;
             } catch (error) {
             }
         }
