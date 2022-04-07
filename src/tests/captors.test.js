@@ -78,13 +78,16 @@ describe('Affichage de la liste de composants', () => {
         });
         const sensorList = document.getElementsByTagName("a");
         expect(idSelected).toBe(undefined);
+        expect(window.location.href).toBe("http://localhost/")
         act(() => {
             sensorList[0].dispatchEvent(new MouseEvent('click', {bubbles: true}));
         });
         expect(idSelected).toBe(0);
+        expect(window.location.href).toBe("http://localhost/switch")
         act(() => {
             sensorList[3].dispatchEvent(new MouseEvent('click', {bubbles: true}));
         });
         expect(idSelected).toBe(3);
+        expect(window.location.href).toBe("http://localhost/lum")
     });
 });
