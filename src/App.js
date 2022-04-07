@@ -13,6 +13,7 @@ class App extends React.Component {
         };
         this.getJson = this.getJson.bind(this);
         this.getSelected = this.getSelected.bind(this);
+        this.isJson = this.isJson.bind(this);
     }
 
     async getJson(url) {
@@ -20,9 +21,21 @@ class App extends React.Component {
             const res = await fetch(url).catch(() => {});
             let json = res.ok ? await res.text() : "";
             this.setState({json: json});
+            if(!this.isJson(json)) {
+                this.setState({idSelected: null});
+            }
         } catch(error) {
 
         }
+    }
+
+    isJson(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
     }
 
     getSelected(id) {

@@ -12,7 +12,7 @@ class Data extends React.Component {
             try {
                 json = JSON.parse(this.props.Parentjson);
                 let item = json.find(e => e.id === this.props.idSelected);
-                return <h2>Type : {item.type}</h2>;
+                return <h2 className={styles.fade}>Type : {item.type}</h2>;
             } catch (error) {
             }
         }
@@ -24,7 +24,7 @@ class Data extends React.Component {
             try {
                 json = JSON.parse(this.props.Parentjson);
                 let item = json.find(e => e.id === this.props.idSelected);
-                return <h1 className={styles.title}>{item.name}</h1>;
+                return <Fragment><h1 className={`${styles.title} ${styles.fade}`}>{item.name}</h1></Fragment>;
             } catch (error) {
             }
         }
@@ -37,27 +37,29 @@ class Data extends React.Component {
                 json = JSON.parse(this.props.Parentjson);
                 let item = json.find(e => e.id === this.props.idSelected);
                 if(item.data.hasOwnProperty("value")) {
+                    let res;
                     if(item.type === "DOOR") {
                         if(item.data.value === 1) {
-                            return <img className={styles.imageBig} src="/ressources/door_OPEN.png" alt="OPEN"/>
+                            res = <img className={styles.imageBig} src="/ressources/door_OPEN.png" alt="OPEN"/>
                         } else {
-                            return <img className={styles.imageBig} src="/ressources/door_CLOSED.png" alt="CLOSED"/>
+                            res = <img className={styles.imageBig} src="/ressources/door_CLOSED.png" alt="CLOSED"/>
                         }
                     } else if(item.type === "LIGHT") {
                         if(item.data.value === 1) {
-                            return <img className={styles.image} src="/ressources/lightbulb_ON.png" alt="ON"/>
+                            res = <img className={styles.image} src="/ressources/lightbulb_ON.png" alt="ON"/>
                         } else {
-                            return <img className={styles.image} src="/ressources/lightbulb_OFF.png" alt="OFF"/>
+                            res = <img className={styles.image} src="/ressources/lightbulb_OFF.png" alt="OFF"/>
                         }
                     } else if(item.type === "SWITCH") {
                         if(item.data.value === 1) {
-                            return <img className={styles.image} src="/ressources/switch_ON.png" alt="ON"/>
+                            res = <img className={styles.image} src="/ressources/switch_ON.png" alt="ON"/>
                         } else {
-                            return <img className={styles.image} src="/ressources/switch_OFF.png" alt="OFF"/>
+                            res = <img className={styles.image} src="/ressources/switch_OFF.png" alt="OFF"/>
                         }
                     } else {
-                        return <h3>Status : {item.data.value}</h3>;
+                        res = <h3>Status : {item.data.value}</h3>;
                     }
+                    return <div className={styles.fade}>{res}</div>
                 } else {
                     let myFormatedData = [];
                     let id = 0;
@@ -80,11 +82,11 @@ class Data extends React.Component {
                         }
                         id++;
                     }
-                    return <Fragment><h3>Valeur Actuelle : {myFormatedData[0].data}</h3>
+                    return <div className={styles.fade}><h3>Valeur Actuelle : {myFormatedData[0].data}</h3>
                         <table className={styles.array} id="table"><tbody>
                         <tr><th className={`${styles.cellTitle} ${styles.cell}`}>labels</th><th className={`${styles.cellTitle} ${styles.cell}`}>data</th></tr>
                         {myFormatedData.map(e => <tr key={e.id}><th className={styles.cell}>{e.label || "no label"}</th><th className={styles.cell}>{e.data}</th></tr>)}
-                        </tbody></table></Fragment>;
+                        </tbody></table></div>;
                 }
             } catch (error) {
             }
@@ -93,7 +95,7 @@ class Data extends React.Component {
 
     render() {
         return (
-            <div className={this.props.hasStyle === true ? styles.dataSide : ""}>
+            <div key={this.props.idSelected} className={this.props.hasStyle === true ? styles.dataSide : ""}>
                 {this.displayTitle()}
                 {this.displayType()}
                 {this.displayArray()}
